@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Presenze - Polizia locale - comune di Salorno</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="manifest" href="/static/manifest.json">
+  <meta name="description" content="Gestione presenze agenti di polizia locale - Salorno" />
+</head>
+<body>
+  <main class="container">
+    <h1>Polizia locale - comune di Salorno</h1>
+
+    <section class="panel">
+      <h2>1) Aggiungi agente</h2>
+      <form id="agent-form">
+        <input id="agent-name" placeholder="Nome cognome" required />
+        <input id="agent-badge" placeholder="Matricola/codice (opz.)" />
+        <button type="submit">Aggiungi agente</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>2) Elenco agenti</h2>
+      <div id="agents-list" class="list"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3) Registra presenza</h2>
+      <label for="agent-select">Seleziona agente</label>
+      <select id="agent-select"></select>
+      <div class="row">
+        <button id="checkin-btn">Check-in</button>
+        <button id="checkout-btn">Check-out</button>
+      </div>
+      <textarea id="attendance-note" placeholder="Nota (es. servizio, luogo)"></textarea>
+      <div id="geo-status" class="muted small"></div>
+    </section>
+
+    <section class="panel">
+      <h2>4) Cronologia agente</h2>
+      <label for="agent-log-select">Seleziona agente</label>
+      <select id="agent-log-select"></select>
+      <div id="attendance-log" class="list"></div>
+    </section>
+
+    <footer class="muted small">App demo — conserva i dati sul server (SQLite).</footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>
